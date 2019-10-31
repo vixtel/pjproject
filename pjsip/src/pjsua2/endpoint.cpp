@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: endpoint.cpp 6026 2019-06-12 06:00:35Z nanang $ */
 /* 
  * Copyright (C) 2013 Teluu Inc. (http://www.teluu.com)
  *
@@ -1328,13 +1328,13 @@ void Endpoint::on_call_rx_reinvite(pjsua_call_id call_id,
     OnCallRxReinviteParam prm;
     prm.offer.fromPj(*offer);
     prm.rdata.fromPj(*rdata);
-    prm.async = PJ2BOOL(*async);
+    prm._async = PJ2BOOL(*async); // SJS -- prepended '_'
     prm.statusCode = *code;
     prm.opt.fromPj(*opt);
     
     call->onCallRxReinvite(prm);
     
-    *async = prm.async;
+    *async = prm._async;         // SJS -- prepended '_'
     *code = prm.statusCode;
     *opt = prm.opt.toPj();
 }
