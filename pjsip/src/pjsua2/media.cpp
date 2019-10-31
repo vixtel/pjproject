@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: media.cpp 6026 2019-06-12 06:00:35Z nanang $ */
 /*
  * Copyright (C) 2013 Teluu Inc. (http://www.teluu.com)
  *
@@ -268,7 +268,8 @@ AudioMedia* AudioMedia::typecastFromMedia(Media *media)
 AudioMediaPlayer::AudioMediaPlayer()
 : playerId(PJSUA_INVALID_ID)
 {
-
+    // SJS
+    eof = false;
 }
 
 AudioMediaPlayer::~AudioMediaPlayer()
@@ -403,7 +404,12 @@ pj_status_t AudioMediaPlayer::eof_cb(pjmedia_port *port,
 {
     PJ_UNUSED_ARG(port);
     AudioMediaPlayer *player = (AudioMediaPlayer*)usr_data;
-    return player->onEof() ? PJ_SUCCESS : PJ_EEOF;
+    // SJS: Hack to prevent callback (Python) which cause segmentation fault
+    // Just set introduced eof variable and have thread poll for "eof"
+    player->eof = true;
+
+    return true;
+    // SJS return player->onEof() ? PJ_SUCCESS : PJ_EEOF;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: call.hpp 6026 2019-06-12 06:00:35Z nanang $ */
 /*
  * Copyright (C) 2012-2013 Teluu Inc. (http://www.teluu.com)
  *
@@ -876,7 +876,7 @@ struct OnCallRxReinviteParam
      * On input, it is false. Set to true if app wants to manually answer
      * the re-INVITE.
      */
-    bool		async;
+    bool		_async; // SJS Added leading '_'
     
     /**
      * Status code to be returned for answering the offer. On input,

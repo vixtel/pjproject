@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: media.hpp 6026 2019-06-12 06:00:35Z nanang $ */
 /*
  * Copyright (C) 2013 Teluu Inc. (http://www.teluu.com)
  *
@@ -549,6 +549,7 @@ public:
     virtual bool onEof()
     { return true; }
 
+    bool eof; // SJS Add eof flag (to be checked in separate thread)
 
 private:
     /**
