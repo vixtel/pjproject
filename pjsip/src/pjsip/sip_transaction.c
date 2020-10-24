@@ -1269,7 +1269,15 @@ static void tsx_set_state( pjsip_transaction *tsx,
 	    pj_grp_lock_release(tsx->grp_lock);
 	}
 
-	(*tsx->tsx_user->on_tsx_state)(tsx, &e);
+        // SJS Prevent (info ONLY) callback that causes Python segmentation fault
+        if (strstr(pjsip_tx_data_get_info(tsx->last_tx), "INFO") != NULL)
+        {
+            PJ_LOG(4, (THIS_FILE, "$$$ Not posting INFO event to callback"));
+        }
+        else
+        { 
+            (*tsx->tsx_user->on_tsx_state)(tsx, &e);
+        }
 
 	if (event_src_type == PJSIP_EVENT_TIMER &&
 	    (pj_timer_entry *)event_src == &tsx->timeout_timer)

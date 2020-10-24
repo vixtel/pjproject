@@ -40,14 +40,15 @@
  */
 #define THIS_FILE		"openh264.cpp"
 
-#if (defined(PJ_DARWINOS) && PJ_DARWINOS != 0 && TARGET_OS_IPHONE) || \
-     defined(__ANDROID__)
+/* SJS #if (defined(PJ_DARWINOS) && PJ_DARWINOS != 0 && TARGET_OS_IPHONE) || \
+    defined(__ANDROID__)
+*/
 #  define DEFAULT_WIDTH		352
 #  define DEFAULT_HEIGHT	288
-#else
+/* #else
 #  define DEFAULT_WIDTH		720
 #  define DEFAULT_HEIGHT	480
-#endif
+#endif */
 
 #define DEFAULT_FPS		15
 #define DEFAULT_AVG_BITRATE	256000

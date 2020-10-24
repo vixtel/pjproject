@@ -1533,6 +1533,8 @@ pj_status_t call_media_on_event(pjmedia_event *event,
 				  "Failed requesting keyframe via SIP INFO"));
 		    } else {
 			call_med->last_req_keyframe = now;
+                        //SJS
+                        PJ_LOG(4, (THIS_FILE, "Sent keyframe request!"));
 		    }
 		}
 	    }

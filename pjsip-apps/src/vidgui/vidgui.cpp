@@ -38,17 +38,17 @@
 //
 // These configure SIP registration
 //
-#define USE_REGISTRATION	0
-#define SIP_DOMAIN		"pjsip.org"
-#define SIP_USERNAME		"vidgui"
-#define SIP_PASSWORD		"secret"
-#define SIP_PORT		5080
-#define SIP_TCP			1
+#define USE_REGISTRATION	1
+#define SIP_DOMAIN		"hnlulutest.vpbx.gabrielcares.com"
+#define SIP_USERNAME		"201"
+#define SIP_PASSWORD		"4CHypy4faK"
+#define SIP_PORT		0
+#define SIP_TCP			0
 
 //
 // NAT helper settings
 //
-#define USE_ICE			1
+#define USE_ICE			0
 #define USE_STUN		0
 #define STUN_SRV		"stun.pjsip.org"
 
