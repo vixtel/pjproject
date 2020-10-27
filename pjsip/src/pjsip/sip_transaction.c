@@ -1270,7 +1270,7 @@ static void tsx_set_state( pjsip_transaction *tsx,
 	}
 
         // SJS Prevent (info ONLY) callback that causes Python segmentation fault
-        if (strstr(pjsip_tx_data_get_info(tsx->last_tx), "INFO") != NULL)
+        if (tsx->last_tx && strstr(pjsip_tx_data_get_info(tsx->last_tx), "INFO") != NULL)
         {
             PJ_LOG(4, (THIS_FILE, "$$$ Not posting INFO event to callback"));
         }
